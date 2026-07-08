@@ -156,13 +156,3 @@ Errors are returned as JSON with a consistent shape:
 
 The HTTP status code is derived from an internal error code
 (e.g. bad request → 400, not found → 404, internal errors → 500).
-
-## Definition of Done Checklist
-
-- [x] `docker-compose up` runs, all containers healthy
-- [x] Database migrations applied automatically
-- [x] Account creation via Postman/cURL
-- [x] Deposit verified — balance increases in DB
-- [x] Withdraw verified — balance decreases, rejected if insufficient funds
-- [x] Transfer verified — sender debited, receiver credited, currency mismatch rejected
-- [x] Transaction history retrievable with pagination and filters
