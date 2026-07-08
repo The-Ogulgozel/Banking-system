@@ -29,6 +29,7 @@ Handler  →  Usecase  →  Repository  →  PostgreSQL
 ├── cmd/                    # application entrypoint
 ├── internal/
 │   ├── app/                # wiring / Run() function
+│   ├── appresult/           # standardized HTTP success/error response formatting
 │   ├── config/              # config loading
 │   ├── db/                  # DB connection + migrations runner
 │   ├── errors/               # centralized app errors
