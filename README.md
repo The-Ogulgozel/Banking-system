@@ -3,13 +3,6 @@
 A simplified backend banking system simulator built with Go, demonstrating clean
 architecture, REST API design, and safe concurrent money transfers.
 
-> **Note:** This is a simplified version of the original task. RabbitMQ, Redis,
-> and gRPC (originally specified for a microservices setup) were intentionally
-> left out to focus on core backend logic within the given timeframe. All
-> operations that were meant to be asynchronous (via RabbitMQ) or use
-> service-to-service gRPC calls are instead handled synchronously within a
-> single monolithic service.
-
 ## Tech Stack
 
 - **Language:** Go 1.26
