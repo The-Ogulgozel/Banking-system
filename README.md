@@ -29,26 +29,6 @@ Handler  →  Usecase  →  Repository  →  PostgreSQL
 - **Usecase** — business rules (locking checks, currency validation, etc.)
 - **Repository** — database access, transactions, row-level locking
 
-## Key Design Decisions
-
-- **BIGSERIAL** primary keys instead of UUID (simple monolithic architecture,
-  no distributed ID generation required).
-- **Currency mismatch validation** — transfers between accounts with different
-  currencies are rejected.
-- **`is_locked`** is used only for internal transaction-level locking during
-  deposit/withdraw/transfer operations. There is no admin "freeze account"
-  endpoint.
-- **Row-level locking (`SELECT ... FOR UPDATE`)** combined with a single DB
-  transaction is used for every balance-changing operation (deposit, withdraw,
-  transfer) to prevent race conditions — this is why balance/currency checks
-  live in the repository layer rather than purely in the usecase layer.
-- **Pagination** (`page`, `limit`) with sensible defaults, applied in the
-  usecase layer.
-- **Balance and transaction amounts** are stored as `BIGINT` (integer,
-  smallest currency unit) rather than floating point, to avoid rounding
-  errors common in financial calculations.
-- Balances are capped at 1 trillion as a sanity limit.
-
 ## Project Structure
 
 ```
